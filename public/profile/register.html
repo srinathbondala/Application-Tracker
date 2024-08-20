@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="navbar center">
+        <div class="logo">
+            <h3>Account Tracker</h3>
+        </div>
+        <nav style="width: 4%;">
+            <ul>
+                <li><a href="../index.html">home</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content center" >
+        <div class="main_div" >
+            <div class="profile">
+                <div class="profile_img">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="profile">
+                    <h2 style="margin: 0; text-align: center; margin-top: 10px;">Account Tracker</h2>
+                </div>
+                <div class="profile_info center">
+                    <div class="main_div1">
+                        <h2 style="margin: 0; text-align: center;">Sign up</h2>
+                        <hr>
+                        <form class="info" id="register_form">
+                            <div class="info_div" style="padding: 0px 10px 0px 0px;">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" placeholder="Eg: John Doe" required>
+                            </div>
+                            
+                            <div class="info_div" style="padding: 0px 10px 0px 0px;">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" placeholder="Eg: example@gmail.com" required>
+                            </div>
+                            
+                            <div class="info_div" style="padding: 0px 10px 0px 0px;">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="Enter your password" required>
+                            </div>
+
+                            <div class="info_div" style="padding: 0px 10px 0px 0px;">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" placeholder="Eg: 9234567801" required>
+                            </div>
+                            
+                            <div class="info_div" style="padding: 0px 10px 0px 0px;">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" placeholder="Eg: 123, abc street, xyz city" required>
+                            </div>
+
+                            <div class="info_div" id="accountForm">
+                                <label for="state">State</label>
+                                <select id="state" required>
+                                    <option value="" disabled selected>Select your state</option>
+                                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                                    <option value="assam">Assam</option>
+                                    <option value="bihar">Bihar</option>
+                                    <option value="chhattisgarh">Chhattisgarh</option>
+                                    <option value="goa">Goa</option>
+                                    <option value="gujarat">Gujarat</option>
+                                    <option value="haryana">Haryana</option>
+                                    <option value="himachal-pradesh">Himachal Pradesh</option>
+                                    <option value="jharkhand">Jharkhand</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="kerala">Kerala</option>
+                                    <option value="madhya-pradesh">Madhya Pradesh</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="manipur">Manipur</option>
+                                    <option value="meghalaya">Meghalaya</option>
+                                    <option value="mizoram">Mizoram</option>
+                                    <option value="nagaland">Nagaland</option>
+                                    <option value="odisha">Odisha</option>
+                                    <option value="punjab">Punjab</option>
+                                    <option value="rajasthan">Rajasthan</option>
+                                    <option value="sikkim">Sikkim</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="telangana">Telangana</option>
+                                    <option value="tripura">Tripura</option>
+                                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                                    <option value="uttarakhand">Uttarakhand</option>
+                                    <option value="west-bengal">West Bengal</option>
+                                    <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
+                                    <option value="chandigarh">Chandigarh</option>
+                                    <option value="dadra-nagar-haveli">Dadra and Nagar Haveli</option>
+                                    <option value="daman-diu">Daman and Diu</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="lakshadweep">Lakshadweep</option>
+                                    <option value="puducherry">Puducherry</option>
+                                </select>
+                            </div>
+                            <div class="info_div">
+                                <label for="user">Select Category</label>
+                                <select id="user" required>
+                                    <option value="" disabled selected>Select your Category</option>
+                                    <option value="User">USER</option>
+                                    <option value="admin">ADMIN</option>
+                                </select>
+                            </div>
+                            <div class="center" style="margin-top: 20px;">
+                                <button type="submit">Create Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+    </div>
+    <script src="register.js"></script>
+    <script src="../default.js"></script>
+</body>

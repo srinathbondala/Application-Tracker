@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="../user/user.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="main-header">
+            <div class="headertop">
+                <div>
+                    <img src="https://img.icons8.com/?size=100&id=32187&format=png" alt="icon" class="icon">
+                    <h2>Account Tracker</h2>
+                </div>
+            </div>
+            <div class="innerHeader">
+                <ul class="options">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#view">View Accounts</a></li>
+                    <li><a href="#create">Create Account</a></li>
+                    <!-- <li><a href="../profile/profile.html">Profile</a></li> -->
+                    <li><a href="../profile/profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <section id="home">
+            <div class="left">
+                <h1>Admin Dashboard</h1>
+                <canvas id="stateAccountsChart"></canvas>
+                <div class="center">
+                    <p>State Vs User Accounts</p>
+                </div>
+            </div>
+            <div class="right">
+                <div class="right_div">
+                    <h3 style="padding-left: 40px;">Key Features </h3>
+                    <ul id="featureList">
+                        <li>Create new User accounts easily with a simple form.</li>
+                        <li>Delete User accounts securely with confirmation.</li>
+                        <li>View all accounts in a table format for easy management.</li>
+                        <li>Search for specific User accounts by ID for quick access.</li>
+                        <li>Visualize account distribution across States with interactive charts.</li>
+                    </ul>
+                </ul>
+            </div>
+        </section>
+        <div class="user-management">
+            <div class="center">
+                <h1> Manage Users</h1>
+            </div>
+            <section id="view">
+                <hr>
+                <div style="text-align: center; display: flex; align-items: center; justify-content: space-around;">
+                    <h2>View Accounts</h2>
+                    <div class="center">
+                        <input type="text" id="searchAccountNumber" name="account_number" required placeholder="search Id">
+                        <p id="error"></p>
+                        <button onclick="search_by_id()">Search</button>
+                    </div>
+                </div>
+                <div id="show_search"></div>
+                <div id="display_data"></div>
+                <hr>
+                <div style="text-align: center;">
+                    <h2>View As Table</h2>
+                </div>
+                <div id="dummy_table">
+                    <table id="accountsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>State</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <hr>
+            <section id="create">
+                <h1 style="margin: 0; text-align: center;">Create Account</h1>
+                <div class="create">
+                    <div class="right_div" style="width: 50%;">
+                        <form id="register_form">
+                            <div class="form-group" style="padding: 0px 10px 0px 0px;">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" placeholder="Eg: John Doe" required>
+                            </div>
+            
+                            <div class="form-group" style="padding: 0px 10px 0px 0px;">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" placeholder="Eg: example@gmail.com" required>
+                            </div>
+            
+                            <div class="form-group" style="padding: 0px 10px 0px 0px;">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="Enter your password" required>
+                            </div>
+            
+                            <div class="form-group" style="padding: 0px 10px 0px 0px;">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" placeholder="Eg: 9234567801" required>
+                            </div>
+            
+                            <div class="form-group" style="padding: 0px 10px 0px 0px;">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" placeholder="Eg: 123, abc street, xyz city" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <select id="state" required>
+                                    <option value="" disabled selected>Select your state</option>
+                                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                                    <option value="assam">Assam</option>
+                                    <option value="bihar">Bihar</option>
+                                    <option value="chhattisgarh">Chhattisgarh</option>
+                                    <option value="goa">Goa</option>
+                                    <option value="gujarat">Gujarat</option>
+                                    <option value="haryana">Haryana</option>
+                                    <option value="himachal-pradesh">Himachal Pradesh</option>
+                                    <option value="jharkhand">Jharkhand</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="kerala">Kerala</option>
+                                    <option value="madhya-pradesh">Madhya Pradesh</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="manipur">Manipur</option>
+                                    <option value="meghalaya">Meghalaya</option>
+                                    <option value="mizoram">Mizoram</option>
+                                    <option value="nagaland">Nagaland</option>
+                                    <option value="odisha">Odisha</option>
+                                    <option value="punjab">Punjab</option>
+                                    <option value="rajasthan">Rajasthan</option>
+                                    <option value="sikkim">Sikkim</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="telangana">Telangana</option>
+                                    <option value="tripura">Tripura</option>
+                                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                                    <option value="uttarakhand">Uttarakhand</option>
+                                    <option value="west-bengal">West Bengal</option>
+                                    <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
+                                    <option value="chandigarh">Chandigarh</option>
+                                    <option value="dadra-nagar-haveli">Dadra and Nagar Haveli</option>
+                                    <option value="daman-diu">Daman and Diu</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="lakshadweep">Lakshadweep</option>
+                                    <option value="puducherry">Puducherry</option>
+                                </select>
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="user">Select Category</label>
+                                <select id="user" required>
+                                    <option value="" disabled selected>Select your Category</option>
+                                    <option value="User">USER</option>
+                                    <option value="admin">ADMIN</option>
+                                </select>
+                            </div>
+            
+                            <div class="center" style="margin-top: 20px; width: 100%;">
+                                <button type="submit">Create Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+    </div>
+
+    <script src="admin.js"></script>
+    <script src="../default.js"></script>
+</body>

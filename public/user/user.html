@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Tracker</title>
+    <link rel="stylesheet" href="user.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="main-header">
+            <div class="headertop">
+                <div>
+                    <img src="https://img.icons8.com/?size=100&id=32187&format=png" alt="icon" class="icon">
+                    <h2>Account Tracker</h2>
+                </div>
+            </div>
+            <div class="innerHeader">
+                <ul class="options">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#view">View Accounts</a></li>
+                    <li><a href="#create">Create Account</a></li>
+                    <li><a href="#update">Update Account</a></li>
+                    <li><a href="#" onclick="view_data();">Download Data</a></li>
+                    <!-- <li><a href="#view">Search Account</a></li> -->
+                    <li><a href="../profile/profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="home">
+            <div class="left">
+                <h2>Accounts</h2>
+                <p>Welcome to the Account Management System.</p>
+                <canvas id="branchAccountsChart"></canvas>
+                <div style="text-align: center;"><p>Branch VS Accounts</p></div>
+            </div>
+            <div class="right">
+                <div class="right_div">
+                    <h3 style="padding-left: 40px;">Key Features </h3>
+                    <ul id="featureList">
+                        <li>Create new accounts easily with a simple form.</li>
+                        <li>Update existing account information quickly.</li>
+                        <li>Delete accounts securely with confirmation.</li>
+                        <li>View all accounts in a table format for easy management.</li>
+                        <li>Search for specific accounts by ID for quick access.</li>
+                        <li>Visualize account distribution across branches with interactive charts.</li>
+                        <li>Download account data in the form of excel sheet.</li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        </section>
+    
+        <section id="view">
+            <hr>
+            <div style="text-align: center; display: flex; align-items: center; justify-content: space-around;">
+                <h2>View Accounts</h2>
+                <div class="center">
+                    <input type="text" id="searchAccountNumber" name="account_number" required placeholder="search Id">
+                    <p id="error"></p>
+                    <button onclick="search_by_id()">Search</button>
+                </div>
+            </div>
+            <div id="show_search"></div>
+            <div id="display_data"></div>
+            <hr>
+            <div style="text-align: center;">
+                <h2>View As Table</h2>
+            </div>
+            <div id="dummy_table">
+                <table id="accountsTable">
+                    <thead>
+                        <tr>
+                            <th>Accounts Id</th>
+                            <th>Accounts Number</th>
+                            <th>Customer Name</th>
+                            <th>Account Type</th>
+                            <th>Balance</th>
+                            <th>Opening Date</th>
+                            <th>Last Transaction Date</th>
+                            <th>Status</th>
+                            <th>Branch Name</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <hr>
+        <section id="create">
+            <h1 style="margin: 0; text-align: center;">Create Account</h1>
+            <div class="create">
+                <div class="right_div"  style="width: 50%;">
+                    <div>
+                        <form id="accountForm">
+                            <div class="form-group">
+                                <label for="account_number">Account Number:</label>
+                                <input type="text" id="account_number" name="account_number" placeholder="Eg: ACC1234567890" required class="inputfield">
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="account_name">Account Name:</label>
+                                <input type="text" id="account_name" name="account_name" placeholder="Eg: Hari" required class="inputfield">
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="account_type">Account Type:</label>
+                                <select id="account_type" name="account_type" required>
+                                    <option value="" disabled selected>Select account type</option>
+                                    <option value="Loan">Loan</option>
+                                    <option value="Savings">Savings</option>
+                                    <option value="Business">Business</option>
+                                </select>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="balance">Balance:</label>
+                                <input type="number" class="inputfield" id="balance" name="balance" step="0.01" placeholder="Eg: 9510.75" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="opening_date">Opening Date:</label>
+                                <input type="date" id="opening_date" name="opening_date" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="last_transaction_date">Last Transaction Date:</label>
+                                <input type="date" id="last_transaction_date" name="last_transaction_date">
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="status">Status:</label>
+                                <select id="status" name="status" required>
+                                    <option value="" disabled selected>Select account status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="branch_name">Branch Name:</label>
+                                <input type="text" id="branch_name" name="branch_name" placeholder="Eg: Main Branch" required class="inputfield">
+                            </div>
+                            <div style="display: flex; align-items: center;justify-content: center; width: 100%;">
+                                <!-- <p style="margin: 0; font-size: 14px;">Note : Fill all details</p> -->
+                                <button type="submit">Add Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>        
+            </div>
+        </section>
+        <hr>
+        <section id="update">
+            <h1 style="margin: 0; text-align: center;">Update Account</h1>
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                <div class="right_div" style="width: 50%;">
+                        <p>Search by Id</p>
+                        <div id="searchFormByAccountNumber">
+                            <input type="text" id="searchAccountNumber1" name="account_number" required>
+                            <button onclick="update_By()" >Search</button>
+                        </div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                    <div class="right_div">
+                    <form id="editForm">
+                        <input type="hidden" id="editId" name="id">
+                        
+                        <div class="form-group">
+                            <label for="edit_account_number">Account Number:</label>
+                            <input type="text" id="edit_account_number" name="account_number" placeholder="Eg: ACC1234567890" required class="inputfield">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_account_name">Account Name:</label>
+                            <input type="text" id="edit_account_name" name="account_name" placeholder="Eg: John Doe" required class="inputfield">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_account_type">Account Type:</label>
+                            <select id="edit_account_type" name="account_type" required>
+                                <option value="" disabled selected>Select account type</option>
+                                <option value="Loan">Loan</option>
+                                <option value="Savings">Savings</option>
+                                <option value="Business">Business</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_balance">Balance:</label>
+                            <input type="number" id="edit_balance" name="balance" step="0.01" placeholder="Eg: 100000" required class="inputfield">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_opening_date">Opening Date:</label>
+                            <input type="date" id="edit_opening_date" name="opening_date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_last_transaction_date">Last Transaction Date:</label>
+                            <input type="date" id="edit_last_transaction_date" name="last_transaction_date">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_status">Status:</label>
+                            <select id="edit_status" name="status" required>
+                                <option value="" disabled selected>Select account status</option>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_branch_name">Branch Name:</label>
+                            <input type="text" id="edit_branch_name" name="branch_name" placeholder="Eg: Main Branch" required class="inputfield">
+                        </div>
+                        <div style="display: flex; align-items: center;justify-content: center; width: 100%;">
+                            <button type="submit">Update Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>            
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Account Management. All Rights Reserved.</p>
+    </footer>
+    <script src="user.js"></script>
+    <script src="../default.js"></script>
+</body>
+</html>
