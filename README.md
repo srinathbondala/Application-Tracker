@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS auth (
 
 Here are some screenshots of our Amazon replica project:
 
-![Main Page](images/main-page.png)
+![Main Page](images/main_page.png)
 ![Profile ](images/profile.png)
 ![Register page](images/register.png)
 ![user page](images/user1.png)
