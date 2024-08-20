@@ -43,3 +43,13 @@ CREATE TABLE IF NOT EXISTS auth (
 ## Run command
 
 - node app.js
+
+# Project Demo Images
+
+Here are some screenshots of our Amazon replica project:
+
+![Main Page](images/main-page.png)
+![Profile ](images/profile.png)
+![Register page](images/register.png)
+![user page](images/user1.png)
+![admin page](images/admin.png)
