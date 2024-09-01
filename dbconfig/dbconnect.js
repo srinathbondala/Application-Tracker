@@ -33,15 +33,16 @@
 //   .catch((err) => console.error('Database connection error:', err.stack));
 
 // module.exports = pool;
+require('dotenv').config();
 const { Pool } = require('pg');
 
 // Create a new pool instance with individual connection parameters
 const pool = new Pool({
-  host: 'factually-secured-mastiff.data-1.use1.tembo.io',
-  port: 5432,
-  user: 'postgres',
-  password: 'Ybi4KIfItDEOSqwi',
-  database: 'postgres',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
   ssl: {
     rejectUnauthorized: false 
   }
