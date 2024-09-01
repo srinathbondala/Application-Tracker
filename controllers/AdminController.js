@@ -63,7 +63,7 @@ exports.getStateAccountData = async (req, res) => {
     try {
         const data = await adminService.sgetStateAccountData();
         const labels = data.map(item => item.state);
-        const accountCounts = data.map(item => item.accountCount);
+        const accountCounts = data.map(item => item.accountcount);
 
         res.json({
             labels,

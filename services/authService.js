@@ -89,7 +89,7 @@
 //   await db.promise().query(sql, [name, phone, address, state, id]);
 //   return this.getUserDetailsById(id);
 // };
-require('dotenv').config(); // Ensure this is at the top of the file
+require('dotenv').config(); 
 const db = require('../dbconfig/dbconnect');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');

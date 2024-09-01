@@ -266,6 +266,9 @@ async function view_data(){
         if(confirm('Do You Want To Download Data')){
             const response = await fetch('../accounts/download', {
                 method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + getCookie('jwtToken')
+                }
             });
 
             if (!response.ok) {
@@ -274,12 +277,14 @@ async function view_data(){
             }
 
             const blob = await response.blob();
+            console.log(await blob.text());
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
             a.download = 'accounts.xlsx';
             document.body.appendChild(a);
             a.click();
+            window.URL.revokeObjectURL(url);
             a.remove();
         }
     } catch (error) {

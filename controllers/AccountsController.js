@@ -62,8 +62,7 @@ async function getBranchAccountData(req, res) {
     try {
         const data = await accountService.sgetAccountsByBranch(req.user.id);
         const labels = data.map(item => item.branch);
-        const accountCounts = data.map(item => item.accountCount);
-
+        const accountCounts = data.map(item => item.accountcount);
         res.json({
             labels,
             datasets: [{
@@ -82,11 +81,12 @@ async function getBranchAccountData(req, res) {
 
 async function downloadAccounts(req, res) {
     try{
-        const buffer = await accountService.downloadAccountService();
+        const buffer = await accountService.downloadAccountService(req.user.id);
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        res.setHeader('Content-Disposition', 'attachment; filename=accounts.xlsx');
+        res.setHeader('Content-Disposition', 'attachment; filename="accounts.xlsx"');
         res.send(buffer);
     } catch(error){
+        console.log(error);
         res.status(500).json({ message:'Failed to download bill data'});
     }
 }

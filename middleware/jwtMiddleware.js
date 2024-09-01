@@ -1,4 +1,6 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
+const JWT_SECRET1 = process.env.JWT_SECRET;
 
 exports.verifyToken = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
@@ -8,7 +10,7 @@ exports.verifyToken = (req, res, next) => {
   }
 
   try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, JWT_SECRET1);
       req.user = decoded;
       next();
   } catch (err) {
@@ -24,7 +26,7 @@ exports.isUser = (req, res, next) => {
   }
 
   try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, JWT_SECRET1);
       req.user = decoded;
       if (req.user.role !== 'user') {
         return res.status(403).send('Access denied. User role required.');
@@ -44,7 +46,7 @@ exports.isAdmin = (req, res, next) => {
   }
 
   try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, JWT_SECRET1);
       req.user = decoded;
       if (req.user.role !== 'admin') {
         return res.status(403).send('Access denied. Admin role required.');

@@ -286,10 +286,10 @@ async function sgetAccountsByBranch(userId) {
 }
 
 // Function to download accounts data as Excel
-async function downloadAccountService(req, res) {
+async function downloadAccountService(data) {
     try {
-        const userId = req.user.id;
-        const { rows } = await conn.promise().query('SELECT * FROM accounts WHERE user_id = $1', [userId]);
+        const userId = data;
+        const { rows } = await conn.query('SELECT * FROM accounts WHERE user_id = $1', [userId]);
 
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet('Accounts');
@@ -309,12 +309,11 @@ async function downloadAccountService(req, res) {
         rows.forEach((row) => {
             worksheet.addRow(row);
         });
-
         const buffer = await workbook.xlsx.writeBuffer();
         return buffer;
     } catch (error) {
         console.log(error);
-        res.status(500).send('Failed to download account data');
+        return new Error(error);
     }
 }
 
