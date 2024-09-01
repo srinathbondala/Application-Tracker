@@ -8,7 +8,7 @@ const jwtMiddleware = require('./middleware/jwtMiddleware');
 
 app.use(express.json());
 app.use(express.static('public'));
-app.use(express.json());
+// app.use(express.json());
 
 app.use('/auth', authRouter);
 app.use('/accounts', jwtMiddleware.isUser, Routes);
