@@ -1,5 +1,5 @@
 // const db = require('../dbconfig/dbconnect');
-// const bcrypt = require('bcrypt');
+// const bcrypt = require('bcryptjs');
 
 // function validateAccountData({ name, email, phone, address, state, role }) {
 //     if (!name || name.length < 3 || name.length > 50) return 'Invalid name';
@@ -93,7 +93,7 @@
 // };
 
 const db = require('../dbconfig/dbconnect');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 function validateAccountData({ name, email, phone, address, state, role }) {
     if (!name || name.length < 3 || name.length > 50) return 'Invalid name';

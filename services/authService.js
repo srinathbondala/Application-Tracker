@@ -1,5 +1,5 @@
 // const db = require('../dbconfig/dbconnect');
-// const bcrypt = require('bcrypt');
+// const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken');
 // const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -91,7 +91,7 @@
 // };
 require('dotenv').config(); 
 const db = require('../dbconfig/dbconnect');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET1 = process.env.JWT_SECRET;
 
