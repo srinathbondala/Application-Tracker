@@ -18,6 +18,7 @@ document.getElementById('register_form').addEventListener('submit', async (event
 
   if (validationErrors.length > 0) {
       alert(validationErrors.join('\n'));
+      val=0;
       return;
   }
 
@@ -28,8 +29,10 @@ document.getElementById('register_form').addEventListener('submit', async (event
 
     if (enteredKey !== adminSecretKey) {
       alert("Incorrect secret key. You cannot register as an admin.");
+      val=0;
       return; // Stop form submission
     }
+    val=0;
   }
 
   try {
@@ -47,6 +50,7 @@ document.getElementById('register_form').addEventListener('submit', async (event
       } catch (e) {
           console.error('Error parsing JSON:', e);
           alert('Unexpected response format from server.');
+          val=0;
           return;
       }
 
